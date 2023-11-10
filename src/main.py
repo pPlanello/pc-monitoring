@@ -1,9 +1,13 @@
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from monitoring_pc import get_ram_total, get_ram_percent, get_cpu, get_disk_percent, get_disk_total
 
 
-# Press the green button in the gutter to run the script.
+def print_hi():
+    get_ram_percent()
+    get_ram_total()
+    get_cpu()
+    get_disk_percent()
+    get_disk_total()
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    print_hi()
