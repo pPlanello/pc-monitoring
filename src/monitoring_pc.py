@@ -14,10 +14,15 @@ def get_ram_percent():
 
 
 def get_ram_total():
-    print(__get_ram())
-    ram_total = __parse_bytes_to_gigabyte(__get_ram().total)
-    print('Ram total: ' + str(ram_total) + ' GB')
+    ram_total = __parse_bytes_to_gibibyte(__get_ram().total)
+    print('Ram total: ' + str(ram_total) + ' GiB')
     return ram_total
+
+
+def get_ram_usage():
+    ram_usage = __parse_bytes_to_gibibyte(__get_ram().used)
+    print('Ram usage: ' + str(ram_usage) + ' GiB')
+    return ram_usage
 
 
 def get_disk_percent():
@@ -32,12 +37,22 @@ def get_disk_total():
     return disk_total
 
 
+def get_disk_usage():
+    disk_usage = __parse_bytes_to_gigabyte(__get_disk().used)
+    print('Disk usage: ' + str(disk_usage) + ' GB')
+    return disk_usage
+
+
 def __get_ram():
     return psutil.virtual_memory()
 
 
 def __get_disk():
     return psutil.disk_usage('/')
+
+
+def __parse_bytes_to_gibibyte(bytes_value):
+    return bytes_value / (1024 * 1024 * 1024)
 
 
 def __parse_bytes_to_gigabyte(bytes_value):
