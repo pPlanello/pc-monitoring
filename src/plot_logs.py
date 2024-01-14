@@ -1,15 +1,16 @@
 from datetime import datetime
 
-from src.file_service import save_data_logs_in_file
+from src.file_service import save_data_logs_in_file, save_data_in_excel
 from src.monitoring.RAM import RAM
 from src.monitoring.Disk import Disk
 
 
 def save_logs_stats_in_file(date=datetime.now(), cpu=None, ram: RAM = None, disk: Disk = None):
     dateFormat = __format_date(date)
-    monitoring_data_message = __print_logs_data(dateFormat, cpu, ram_percent=ram.percent, disk_percent=disk.percent)
+    monitoring_data_message = __print_logs_data(dateFormat, cpu_percent=cpu, ram_percent=ram.percent, disk_percent=disk.percent)
 
     save_data_logs_in_file(date, monitoring_data_message)
+    save_data_in_excel(date, cpu_percent=cpu, ram_percent=ram.percent, disk_percent=disk.percent)
     return
 
 
