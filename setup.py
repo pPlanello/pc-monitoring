@@ -2,6 +2,6 @@ from setuptools import setup
 
 setup(
     name="pc-monitoring",
-    version="1.1.1",
+    version="1.2.0",
     install_requires=["psutil"],
 )

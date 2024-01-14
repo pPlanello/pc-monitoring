@@ -1,16 +1,5 @@
-from monitoring_pc import get_ram_total, get_ram_percent, get_ram_usage, get_cpu, get_disk_percent, get_disk_total, \
-    get_disk_usage
-
-
-def print_hi():
-    get_ram_percent()
-    get_ram_total()
-    get_ram_usage()
-    get_cpu()
-    get_disk_percent()
-    get_disk_total()
-    get_disk_usage()
-
+from plot_logs import save_logs_stats_in_file
+from src.monitoring.monitoring_service import obtain_cpu_data, obtain_disk_data, obtain_ram_data
 
 if __name__ == '__main__':
-    print_hi()
+    save_logs_stats_in_file(cpu=obtain_cpu_data(), ram=obtain_ram_data(), disk=obtain_disk_data())
