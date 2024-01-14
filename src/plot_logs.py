@@ -8,13 +8,13 @@ from src.monitoring.Disk import Disk
 def save_logs_stats_in_file(date=datetime.now(), cpu=None, ram: RAM = None, disk: Disk = None):
     dateFormat = __format_date(date)
     monitoring_data_message = __print_logs_data(dateFormat, cpu, ram_percent=ram.percent, disk_percent=disk.percent)
-    print(monitoring_data_message)
+
     save_data_logs_in_file(date, monitoring_data_message)
     return
 
 
 def __print_logs_data(dateFormat: str, cpu_percent: str = None, ram_percent: str = None, disk_percent: str = None):
-    return '[{}] - CPU: {} RAM: {}% DISK: {}'.format(dateFormat, cpu_percent, ram_percent, disk_percent)
+    return '[{}] - CPU usage: {} %  RAM usage: {} %  DISK usage: {} %'.format(dateFormat, cpu_percent, ram_percent, disk_percent)
 
 
 def __format_date(date: datetime):
